@@ -1,0 +1,23 @@
+<phpunit backupGlobals="false"
+         backupStaticAttributes="false"
+         bootstrap="public/bootstrap.php"
+         cacheTokens="true"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         processIsolation="false"
+         stopOnFailure="false"
+         syntaxCheck="false"
+         verbose="false">
+    <testsuites>
+        <testsuite name="PHPUnit">
+            <directory>tests/PhoneTools</directory>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <whitelist>
+            <directory>src/PhoneTools</directory>
+        </whitelist>
+    </filter>
+</phpunit>

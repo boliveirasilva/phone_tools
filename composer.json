@@ -1,0 +1,26 @@
+{
+    "name": "root/phone_tools",
+    "description": "Biblioteca para validação e tratamento de números de telefone",
+    "require-dev": {
+        "phpunit/phpunit": "^4.8"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Bruno Oliveira",
+            "email": "boliveirasilva@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": 
+        {
+            "PhoneTools\\": "src/PhoneTools/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": 
+        {
+            "Tryout\\PhoneTools\\": "tests/PhoneTools/"
+        }
+    }
+}
