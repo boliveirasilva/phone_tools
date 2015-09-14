@@ -3,7 +3,7 @@ namespace Tryout\PhoneTools;
 
 use PhoneTools\PhoneTools;
 
-class ClassName extends \PHPUnit_Framework_TestCase
+class PhoneToolsTest extends \PHPUnit_Framework_TestCase
 {
 
     public function assertPreConditions()
