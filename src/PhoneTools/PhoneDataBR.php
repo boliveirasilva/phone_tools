@@ -9,9 +9,14 @@ use \invalidArgumentException;
 class PhoneDataBR implements PhoneDataInterface
 {
     private $regex = '/^(?:(?:\+|00)?(55)\s?)?(?:\(?0?([1-9][0-9])\)?\s?)?(?:(\d{4,5})\-?(\d{4}))$/';
+
     private $untreated = null;
+
     private $sliced = null;
+    private $sliced_phone_fields = array('DDI', 'DDD', 'P1', 'P2');
+
     private $is_valid = false;
+
     private $communication_type = null;
 
 
@@ -53,30 +58,30 @@ class PhoneDataBR implements PhoneDataInterface
 
     protected function validate($phone_number)
     {
-        $sliced_phone_fields = array('ddi', 'ddd', 'p1', 'p2');
-
         if (preg_match($this->regex, $phone_number, $regex_returned) == 1) {
             $this->is_valid = true;
         }
 
         if (array_shift($regex_returned) !== null) {
-            $this->sliced = array_combine($sliced_phone_fields, $regex_returned);
+            $this->sliced = array_combine($this->sliced_phone_fields, $regex_returned);
         } else {
-            $this->sliced = array_fill_keys($sliced_phone_fields, null);
+            $this->sliced = array_fill_keys($this->sliced_phone_fields, null);
         }
     }
 
     protected function getCommunicationType()
     {
         // Carrega identificador de serviço
-        $servico_id = substr($this->sliced['p1'], 0, 1);
+        $servico_id = substr($this->sliced['P1'], 0, 1);
 
-        if (strlen($this->sliced['p1']) == 5) {
-            $this->communication_type = 'mobile';
+        $tamanho = strlen($this->sliced['P1']);
+
+        if ($tamanho == 5 && $servico_id == 9) {
+            $this->communication_type = 'mobile pessoal';
         } elseif ($servico_id > 2 && $servico_id <= 5) {
             $this->communication_type = 'fixa';
         } elseif ($servico_id == 7) {
-            $this->communication_type = 'mobile';
+            $this->communication_type = 'mobile especializado';
         } else {
             $this->communication_type = 'n/i';
         }

@@ -51,8 +51,8 @@ class PhoneDataTest extends \PHPUnit_Framework_TestCase
         // fwrite(STDOUT, 'Retornando:: (' . gettype($fatiado) . ') ' . print_r($fatiado, true));
         $this->assertEquals(
             '21',
-            $fatiado['ddd'],
-            'O valor retornado não é igual ao esperado. Retornou ' . print_r($fatiado['ddd'], true)
+            $fatiado['DDD'],
+            'O valor retornado não é igual ao esperado. Retornou ' . print_r($fatiado['DDD'], true)
         );
     }
 
@@ -75,7 +75,7 @@ class PhoneDataTest extends \PHPUnit_Framework_TestCase
     {
         $instance = new PhoneDataBR('+5511964821010');
         $this->assertEquals(
-            'mobile',
+            'mobile pessoal',
             $instance->getType(), 
             'O valor retornado não era esperado.'
         );
