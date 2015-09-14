@@ -7,6 +7,12 @@ class PhoneTools
 
     public function __construct()
     {
-        $this->telefones = null;
+        
+    }
+
+    public function setPhoneNumber($phone_number)
+    {
+        $this->telefones[] = new PhoneDataBR($phone_number);
+        return $this;
     }
 }
