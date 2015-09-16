@@ -14,7 +14,7 @@
     "autoload": {
         "psr-4": 
         {
-            "PhoneTools\\": "src/PhoneTools/"
+            "PhoneTools\\": "library/PhoneTools/"
         }
     },
     "autoload-dev": {
