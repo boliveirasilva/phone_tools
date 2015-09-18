@@ -80,4 +80,88 @@ class PhoneDataTest extends \PHPUnit_Framework_TestCase
             'O valor retornado não era esperado.'
         );
     }
+
+    /**
+     * @depends testGettingIsvalidFunctionShouldReturnACorrectlyBoolean
+     */
+    public function testGettingFormattedPhoneNumberWithoutParameterShouldWork()
+    {
+        $instance = new PhoneDataBR('+5511964821010');
+        $this->assertEquals(
+            '+5511964821010',
+            $instance->getFormat(), 
+            'O valor retornado não era esperado.'
+        );
+    }
+
+    /**
+     * @depends testGettingIsvalidFunctionShouldReturnACorrectlyBoolean
+     */
+    public function testGettingFormattedPhoneNumberWithValidInternationalParameterShouldWork()
+    {
+        $instance = new PhoneDataBR('+5511964821010');
+        $this->assertEquals(
+            '+55',
+            $instance->getFormat('i'), 
+            'O valor retornado não era esperado.'
+        );
+    }
+
+    /**
+     * @depends testGettingIsvalidFunctionShouldReturnACorrectlyBoolean
+     */
+    public function testGettingFormattedPhoneNumberWithValidRegionParameterShouldWork()
+    {
+        $instance = new PhoneDataBR('+5511964821010');
+        $this->assertEquals(
+            '(11)',
+            $instance->getFormat('r'), 
+            'O valor retornado não era esperado.'
+        );
+    }
+
+    /**
+     * @depends testGettingIsvalidFunctionShouldReturnACorrectlyBoolean
+     */
+    public function testGettingFormattedPhoneNumberWithValidFoneParameterShouldWork()
+    {
+        $instance = new PhoneDataBR('+5511964821010');
+        $this->assertEquals(
+            '96482-1010',
+            $instance->getFormat('f'), 
+            'O valor retornado não era esperado.'
+        );
+    }
+
+    /**
+     * @depends testGettingIsvalidFunctionShouldReturnACorrectlyBoolean
+     */
+    public function testGettingFormattedPhoneNumberWithValidP1OrP2ParameterShouldWork()
+    {
+        $instance = new PhoneDataBR('+5511964821010');
+        $this->assertEquals(
+            '96482',
+            $instance->getFormat('p1'), 
+            'O valor retornado não era esperado.'
+        );
+        $this->assertEquals(
+            '1010',
+            $instance->getFormat('p2'), 
+            'O valor retornado não era esperado.'
+        );
+    }
+
+
+    /**
+     * @depends testGettingIsvalidFunctionShouldReturnACorrectlyBoolean
+     */
+    public function testGettingFormattedPhoneNumberWithValidExpressionShouldWork()
+    {
+        $instance = new PhoneDataBR('+5511964821010');
+        $this->assertEquals(
+            '+55 (11) 96482-1010',
+            $instance->getFormat('irf'), 
+            'O valor retornado não era esperado.'
+        );
+    }
 }

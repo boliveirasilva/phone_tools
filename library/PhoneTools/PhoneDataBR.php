@@ -86,4 +86,34 @@ class PhoneDataBR implements PhoneDataInterface
             $this->communication_type = 'n/i';
         }
     }
+
+    public function getFormat($format = null)
+    {
+        $formatted_number = $this->untreated;
+        if ($format !== null) {
+            $formatted_number = '';
+
+            if (strpos($format, 'i') !== false) {
+                $formatted_number .= '+' . (empty($this->sliced['DDI']) ? '55' : $this->sliced['DDI']) . ' ';
+            }
+
+            if (strpos($format, 'r') !== false) {
+                $formatted_number .= '(' . (empty($this->sliced['DDD']) ? '11' : $this->sliced['DDD']) . ') ';
+            }
+
+            if (strpos($format, 'f') !== false || strpos($format, 'p1') !== false) {
+                $formatted_number .= $this->sliced['P1'];
+            }
+
+            if (strpos($format, 'f') !== false) $formatted_number .= '-';
+
+            if (strpos($format, 'f') !== false || strpos($format, 'p2') !== false) {
+                $formatted_number .= $this->sliced['P2'];
+            }
+
+            $formatted_number = trim($formatted_number);
+        }
+
+        return $formatted_number;
+    }
 }
