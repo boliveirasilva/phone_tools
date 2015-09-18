@@ -1,9 +1,6 @@
 {
     "name": "root/phone_tools",
     "description": "Biblioteca para validação e tratamento de números de telefone",
-    "require-dev": {
-        "phpunit/phpunit": "^4.8"
-    },
     "license": "MIT",
     "authors": [
         {
@@ -11,6 +8,10 @@
             "email": "boliveirasilva@gmail.com"
         }
     ],
+    "require-dev": {
+        "phpunit/phpunit": "^4.8",
+        "twbs/bootstrap": "^3.3.5"
+    },
     "autoload": {
         "psr-4": 
         {

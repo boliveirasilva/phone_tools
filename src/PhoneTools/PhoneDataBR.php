@@ -8,7 +8,7 @@ use \invalidArgumentException;
  */
 class PhoneDataBR implements PhoneDataInterface
 {
-    private $regex = '/^(?:(?:\+|00)?(55)\s?)?(?:\(?0?([1-9][0-9])\)?\s?)?(?:(\d{4,5})\-?(\d{4}))$/';
+    private $regex = '/^(?:(?:\+|00)?(55)\s?)?(?:\(?0?([1-9][0-9])\)?\s?)?(?:(9?[2-9]\d{3})\-?(\d{4}))$/';
 
     private $untreated = null;
 
